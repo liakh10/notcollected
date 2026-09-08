@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="config.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Not Collected Docs</title>
+<meta name="description" content="Field manual for Not Collected, the laptop that is still on the shelf" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/apple-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&display=swap" rel="stylesheet" />
+<style>
+:root{--shop:#e9e2cf;--shop-2:#d7cdb3;--tag:#e9d38a;--tag-d:#b89a4a;--green:#b6e83c;--green-d:#6f9a1c;--ink:#1c1a14;--dim:#7a6f5a;--cream:#f4efe2;--red:#b8322f;
+  --disp:"Anton",system-ui,sans-serif;--type:"Special Elite",ui-monospace,monospace;--pad:clamp(16px,3vw,40px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--ink);color:var(--cream);font-family:var(--type);font-size:14px;-webkit-font-smoothing:antialiased;
+  background-image:repeating-linear-gradient(rgba(0,0,0,.14) 0 1px,transparent 1px 3px)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px var(--pad);background:rgba(28,26,20,.92);backdrop-filter:blur(8px);border-bottom:1px solid #2a2820}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-size:15px;letter-spacing:.12em;color:var(--green)}
+.brand img{width:28px;height:28px}
+.brand small{font-family:var(--type);font-size:11px;letter-spacing:.1em;color:var(--dim)}
+.top nav{display:flex;gap:6px}
+.btn{height:34px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 14px;font-family:var(--disp);font-size:13px;letter-spacing:.12em;background:#2a2820;color:var(--cream)}
+.btn svg{width:13px;height:13px}
+.btn.buy{background:var(--green);color:var(--ink)}
+.btn.crumb{background:var(--tag);color:var(--ink)}
+.shell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:clamp(20px,4vw,56px);width:min(1120px,100%);margin:0 auto;padding:34px var(--pad) 80px;min-width:0}
+.side{position:sticky;top:78px;align-self:start;display:flex;flex-direction:column;gap:2px}
+.kick{font-size:10px;letter-spacing:.32em;color:var(--green);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.kick::before{content:"";width:8px;height:8px;background:var(--green)}
+.side a{font-size:13px;letter-spacing:.03em;padding:6px 10px;color:var(--dim);border-left:2px solid transparent}
+.side a:hover{color:var(--cream)}
+.side a.on{color:var(--green);border-left-color:var(--green);background:rgba(182,232,60,.06)}
+.hero{margin-bottom:22px}
+.hero h1{font-family:var(--disp);font-size:clamp(36px,6vw,64px);line-height:.95;color:var(--green);letter-spacing:.02em}
+.hero p{margin-top:12px;font-size:14px;line-height:1.55;color:var(--dim);max-width:60ch;white-space:pre-line}
+.sec{background:var(--tag);color:var(--ink);padding:clamp(16px,2.6vw,26px);margin-bottom:16px;position:relative;rotate:-.3deg}
+.sec:nth-child(even){rotate:.3deg}
+.sec::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:8px;background:radial-gradient(circle at 6px 0,transparent 5px,var(--tag) 5.5px) -6px 0/12px 8px repeat-x}
+.sec h2{font-family:var(--disp);font-size:clamp(20px,2.6vw,28px);line-height:1;margin-bottom:12px;letter-spacing:.04em}
+.sec h2 i{font-style:normal;font-family:var(--type);font-size:9px;letter-spacing:.3em;color:#5a4a1c;display:block;margin-bottom:8px}
+.sec p{font-size:14px;line-height:1.6;max-width:68ch}
+.sec p + p{margin-top:8px}
+.rows{display:grid;margin-top:12px;border-top:2px dashed var(--tag-d)}
+.row{display:grid;grid-template-columns:170px 1fr;gap:12px;padding:8px 0;border-bottom:1px dashed var(--tag-d);font-size:13.5px;line-height:1.5}
+.row dt{font-size:9px;letter-spacing:.22em;color:#5a4a1c;padding-top:5px}
+.tree{margin-top:12px;font-size:13px;line-height:1.6;white-space:pre;overflow-x:auto;padding:10px 12px;background:rgba(255,255,255,.35)}
+.tree b{color:var(--red);font-weight:400}
+.kbd{display:inline-block;font-family:var(--disp);font-size:11px;padding:2px 7px;background:var(--ink);color:var(--cream);margin:0 2px;letter-spacing:.1em}
+.ca{display:inline-flex;align-items:center;gap:10px;max-width:100%;padding:8px 12px;margin-top:12px;background:rgba(255,255,255,.35);border:1px dashed var(--tag-d)}
+.ca small{font-size:9px;letter-spacing:.2em;color:#5a4a1c;white-space:nowrap}
+.ca b{font-weight:400;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ca .copy{display:none;font:inherit;font-family:var(--disp);font-size:11px;letter-spacing:.14em;padding:5px 9px;background:var(--red);color:#fff;border:0;cursor:pointer}
+.ca.live{cursor:pointer;background:#fff8dc;border-style:solid;box-shadow:0 0 16px rgba(182,232,60,.45)}
+.ca.live .copy{display:inline-block}
+.links{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.links .btn{background:var(--ink)}
+.faq{display:grid;gap:8px;margin-top:10px}
+.faq div{padding:10px 12px;background:rgba(255,255,255,.35)}
+.faq b{font-family:var(--disp);font-size:14px;display:block;margin-bottom:4px;letter-spacing:.04em}
+.faq span{font-size:13.5px;line-height:1.5}
+.foot{width:min(1120px,100%);margin:0 auto;padding:0 var(--pad) 40px;font-size:9px;letter-spacing:.22em;color:var(--dim);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:820px){
+  .shell{grid-template-columns:minmax(0,1fr);gap:16px;padding-top:18px}
+  main{min-width:0}
+  .side{position:static;flex-direction:row;overflow-x:auto;gap:4px;padding-bottom:6px;scrollbar-width:none;max-width:100%}
+  .side .kick{display:none}
+  .side a{white-space:nowrap;font-size:12px;padding:5px 9px;border-left:0;background:#2a2820}
+  .row{grid-template-columns:1fr;gap:3px}
+  .top nav .btn span{display:none}
+  .ca{width:100%;flex-wrap:wrap;gap:5px 10px}
+  .ca small{width:100%}
+  .ca b{width:100%;font-size:clamp(9px,2.7vw,13px)}
+  .ca .copy{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="/"><img src="assets/favicon.png" alt="" /><span data-name>NOT COLLECTED</span><small>docs</small></a>
+  <nav>
+    <a class="btn" href="/"><span>Shelf</span></a>
+    <a class="btn buy" data-link="pons" href="https://www.ponsfamily.com/launchpad"><svg><use href="#i-pons"/></svg><span>Buy</span></a>
+    <a class="btn" data-link="x" href="https://x.com"><svg><use href="#i-x"/></svg><span>X</span></a>
+    <span class="btn crumb">Docs</span>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="side">
+    <span class="kick">SHOP RULES</span>
+    <a href="#what" class="on">What is this</a>
+    <a href="#ticket">The ticket</a>
+    <a href="#years">The years</a>
+    <a href="#site">Using the site</a>
+    <a href="#token">Token</a>
+    <a href="#local">Nothing is stored</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#faq">FAQ</a>
+  </aside>
+
+  <main>
+    <div class="hero">
+      <h1><span data-name>NOT COLLECTED</span> DOCS</h1>
+      <p>Everything about the shelf, written on the back of the ticket
+Read it at the counter, the counter is open</p>
+    </div>
+
+    <section id="what" class="sec">
+      <h2><i>01 · OVERVIEW</i>What is <span data-name>Not Collected</span></h2>
+      <p>A small computer repair shop in Delaware and one green laptop on shelf 2. It was dropped off in April 2019 with a liquid problem, fixed the same day, and never picked up. The shop kept it. The world argued about it. The laptop sat there.</p>
+      <p>In September 2026 the owner came back with the ticket because the laptop got a token. The shop asked for an ID. This site is the shelf.</p>
+      <div class="rows">
+        <dl class="row"><dt>CHARACTER</dt><dd>One green low poly laptop with a two dot face on the screen, and a claim tag on a string</dd></dl>
+        <dl class="row"><dt>PLACE</dt><dd>The shop: glass counter, keyboards and cables, a wall of tagged laptops, the NOT COLLECTED shelf</dd></dl>
+        <dl class="row"><dt>THE STYLE</dt><dd>Everyone and everything looks like a 2003 console game, the shop stopped updating that year too</dd></dl>
+        <dl class="row"><dt>CHAIN</dt><dd>Robinhood Chain, token through the Pons launchpad</dd></dl>
+      </div>
+    </section>
+
+    <section id="ticket" class="sec">
+      <h2><i>02 · SLIP 0419</i>The ticket</h2>
+      <div class="rows">
+        <dl class="row"><dt>ITEM</dt><dd>One laptop, green</dd></dl>
+        <dl class="row"><dt>DROPPED OFF</dt><dd>April 2019, the customer said Tuesday</dd></dl>
+        <dl class="row"><dt>ISSUE</dt><dd>Liquid, unspecified</dd></dl>
+        <dl class="row"><dt>REPAIRED</dt><dd>Same day</dd></dl>
+        <dl class="row"><dt>CALLS MADE</dt><dd>Three, then the shop stopped</dd></dl>
+        <dl class="row"><dt>DAYS ON THE SHELF</dt><dd>Counted live at the top of the site from 12 April 2019</dd></dl>
+        <dl class="row"><dt>COLLECTED</dt><dd>No</dd></dl>
+      </div>
+    </section>
+
+    <section id="years" class="sec">
+      <h2><i>03 · THE SHELF</i>The years</h2>
+      <p>Five pictures from the shop, one per year that mattered. All of them are the same laptop in the same spot.</p>
+      <div class="tree"><b>years</b>
+├── 2019   dropped it off, said he would be back Tuesday
+├── 2020   the shop closed for a while, the laptop did not notice
+├── 2022   dusted every spring, never moved
+├── 2024   made the news, still no pickup
+└── 2026   came back with the ticket, forgot the ID</div>
+    </section>
+
+    <section id="site" class="sec">
+      <h2><i>04 · CONTROLS</i>Using the site</h2>
+      <div class="rows">
+        <dl class="row"><dt>LOADING</dt><dd>The ticket on the loading screen fills as the six frames of the shop arrive</dd></dl>
+        <dl class="row"><dt>THE WALK</dt><dd>Scrolling walks you from the sidewalk to the counter to the shelf, and the day turns into night. The frames blend into each other on the way</dd></dl>
+        <dl class="row"><dt>SOUND</dt><dd>Quiet until you tap. Your first click anywhere starts the shop radio</dd></dl>
+        <dl class="row"><dt>COLLECT</dt><dd>The red button on the ticket. Press it as many times as you like, the line under it tells you what the counter needs</dd></dl>
+        <dl class="row"><dt>THE YEARS</dt><dd>Click a year to open it, <span class="kbd">←</span> <span class="kbd">→</span> to move, <span class="kbd">ESC</span> or CLOSE to close</dd></dl>
+        <dl class="row"><dt>CAM 2</dt><dd>The last screen is the shelf camera. The laptop blinks, the tag sways, nothing else happens</dd></dl>
+      </div>
+    </section>
+
+    <section id="token" class="sec">
+      <h2><i>05 · TOKEN</i>Token</h2>
+      <p>The token launches on Robinhood Chain through the Pons launchpad. The contract goes onto the ticket and under the shelf camera. Until then both say soon.</p>
+      <div class="ca" id="ca"><small>CONTRACT</small><b id="caVal">soon</b><button class="copy" id="caCopy">COPY</button></div>
+      <div class="links">
+        <a class="btn buy" data-link="pons" href="https://www.ponsfamily.com/launchpad"><svg><use href="#i-pons"/></svg>Buy on Pons</a>
+        <a class="btn" data-link="x" href="https://x.com"><svg><use href="#i-x"/></svg>X</a>
+      </div>
+      <div class="rows">
+        <dl class="row"><dt>CHAIN</dt><dd>Robinhood Chain, EVM, addresses start with 0x</dd></dl>
+        <dl class="row"><dt>LAUNCHPAD</dt><dd>Pons, ponsfamily.com. Buy opens the launchpad, and the token page once the address is in</dd></dl>
+        <dl class="row"><dt>CHART</dt><dd>DexScreener on Robinhood Chain, the link joins the ticket together with the contract</dd></dl>
+        <dl class="row"><dt>NOT THIS</dt><dd>This is not the token launched by the laptop's owner on another chain. This is the shelf it sat on</dd></dl>
+      </div>
+    </section>
+
+    <section id="local" class="sec">
+      <h2><i>06 · PRIVACY</i>Nothing is stored</h2>
+      <p>No backend, no account, no cookies, nothing written to your browser. The shop keeps one thing and it is not yours.</p>
+      <div class="rows">
+        <dl class="row"><dt>MUSIC</dt><dd>One CC0 ambient loop on the shop radio, plays after your first tap</dd></dl>
+        <dl class="row"><dt>REDUCED MOTION</dt><dd>If your system asks for it, the dust and the blinking stop, the scroll still works</dd></dl>
+      </div>
+    </section>
+
+    <section id="roadmap" class="sec">
+      <h2><i>07 · NEXT</i>Roadmap</h2>
+      <div class="tree"><b>status</b>
+├── done      the shop, the walk, the ticket, five years, the camera, this manual
+├── launch    contract on the ticket, chart link joins the buttons
+└── after     more years on the shelf, the laptop stays where it is</div>
+    </section>
+
+    <section id="faq" class="sec">
+      <h2><i>08 · FAQ</i>Questions</h2>
+      <div class="faq">
+        <div><b>Is this the real laptop</b><span>It is a green one with a face on a shelf in a game. Everything else about the story you already know</span></div>
+        <div><b>Can I collect it</b><span>Bring the ticket and an ID. The button on the site only takes the ticket</span></div>
+        <div><b>Why is it green</b><span>Shop colour. Everything left here long enough turns green</span></div>
+        <div><b>Does the shop still call</b><span>Three calls in 2019. The number has not changed, the shop has not either</span></div>
+        <div><b>What happens at launch</b><span>The contract goes onto the ticket, the buy button starts pointing at the token page, the laptop stays on shelf 2</span></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="foot"><span data-name>NOT COLLECTED</span><span>ROBINHOOD CHAIN · PONS · SHELF 2</span></footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-pons" viewBox="0 0 64 64"><path d="M14 8h24c11 0 18 7 18 17s-7 17-18 17h-9v12a3 3 0 0 1-3 3H17a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3z" fill="currentColor"/><path d="M29 20h8c4 0 6.5 2 6.5 5s-2.5 5-6.5 5h-8z" fill="#fff" opacity=".9"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.9 2H22l-7.1 8.1L23 22h-6.6l-5.2-6.8L5.3 22H2.1l7.6-8.7L1.5 2h6.7l4.7 6.2L18.9 2zm-1.1 18h1.8L7.3 3.9H5.4L17.8 20z"/></symbol>
+</svg>
+
+<script>
+(function(){
+  var S = window.SITE, CA = (S.CA||"SOON").trim(), HAS_CA = CA !== "SOON" && CA !== "";
+  document.querySelectorAll('[data-name]').forEach(function(e){ e.textContent = (e.closest('h2') ? S.NAME : S.NAME.toUpperCase()); });
+  document.title = S.NAME + ' Docs';
+  document.querySelectorAll('[data-link="pons"]').forEach(function(a){ a.href = HAS_CA ? window.PONS_HOME + '/' + CA : window.PONS_HOME; a.target='_blank'; a.rel='noopener'; });
+  document.querySelectorAll('[data-link="x"]').forEach(function(a){ a.href = S.X_URL || 'https://x.com'; a.target='_blank'; a.rel='noopener'; });
+  var caBox = document.getElementById('ca'), caVal = document.getElementById('caVal'), caCopy = document.getElementById('caCopy');
+  caVal.textContent = HAS_CA ? CA : 'soon';
+  if(HAS_CA){ caBox.classList.add('live'); caBox.title = CA; caBox.addEventListener('click', function(){ if(navigator.clipboard) navigator.clipboard.writeText(CA); var old = caCopy.textContent; caCopy.textContent = 'COPIED'; setTimeout(function(){ caCopy.textContent = old; }, 1100); }); }
+  var links = [].slice.call(document.querySelectorAll('.side a')), secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function spy(){ var y = window.scrollY + 120, cur = 0; secs.forEach(function(s, i){ if(s && s.offsetTop <= y) cur = i; }); links.forEach(function(a, i){ a.classList.toggle('on', i === cur); }); }
+  addEventListener('scroll', spy, { passive: true }); spy();
+})();
+</script>
+</body>
+</html>
