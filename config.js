@@ -1,6 +1,6 @@
 /* ================= CONFIG: единственное место, где меняются данные ================= */
 window.SITE = {
-  CA:      "SOON",                       /* строго "SOON" до лаунча, потом 0x… (42 символа) */
+  CA:      "0x5ed3271718dBcf0b3E109174E6DAA9a0a26d8512",                       /* строго "SOON" до лаунча, потом 0x… (42 символа) */
   X_URL:   "https://x.com/laptophunterrh",
   NAME:    "Laptop Hunter",
   TICKER:  "$HUNT",
