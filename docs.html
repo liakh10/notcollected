@@ -4,8 +4,8 @@
 <script src="config.js"></script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Not Collected Docs</title>
-<meta name="description" content="Field manual for Not Collected, the laptop that is still on the shelf" />
+<title>Laptop Hunter Docs</title>
+<meta name="description" content="Field manual for Laptop Hunter, the laptop he went back for" />
 <link rel="icon" type="image/png" href="assets/favicon.png" />
 <link rel="apple-touch-icon" href="assets/apple-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,9 +55,8 @@ img{display:block;max-width:100%}
 .ca{display:inline-flex;align-items:center;gap:10px;max-width:100%;padding:8px 12px;margin-top:12px;background:rgba(255,255,255,.35);border:1px dashed var(--tag-d)}
 .ca small{font-size:9px;letter-spacing:.2em;color:#5a4a1c;white-space:nowrap}
 .ca b{font-weight:400;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ca .copy{display:none;font:inherit;font-family:var(--disp);font-size:11px;letter-spacing:.14em;padding:5px 9px;background:var(--red);color:#fff;border:0;cursor:pointer}
+.ca .copy{display:inline-block;font:inherit;font-family:var(--disp);font-size:11px;letter-spacing:.14em;padding:5px 9px;background:var(--red);color:#fff;border:0;cursor:pointer}
 .ca.live{cursor:pointer;background:#fff8dc;border-style:solid;box-shadow:0 0 16px rgba(182,232,60,.45)}
-.ca.live .copy{display:inline-block}
 .links{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
 .links .btn{background:var(--ink)}
 .faq{display:grid;gap:8px;margin-top:10px}
@@ -82,9 +81,9 @@ img{display:block;max-width:100%}
 </head>
 <body>
 <header class="top">
-  <a class="brand" href="/"><img src="assets/favicon.png" alt="" /><span data-name>NOT COLLECTED</span><small>docs</small></a>
+  <a class="brand" href="/"><img src="assets/favicon.png" alt="" /><span data-name>LAPTOP HUNTER</span><small>docs</small></a>
   <nav>
-    <a class="btn" href="/"><span>Shelf</span></a>
+    <a class="btn" href="/"><span>The find</span></a>
     <a class="btn buy" data-link="pons" href="https://www.ponsfamily.com/launchpad"><svg><use href="#i-pons"/></svg><span>Buy</span></a>
     <a class="btn" data-link="x" href="https://x.com"><svg><use href="#i-x"/></svg><span>X</span></a>
     <span class="btn crumb">Docs</span>
@@ -93,75 +92,85 @@ img{display:block;max-width:100%}
 
 <div class="shell">
   <aside class="side">
-    <span class="kick">SHOP RULES</span>
+    <span class="kick">FIELD NOTES</span>
     <a href="#what" class="on">What is this</a>
-    <a href="#ticket">The ticket</a>
-    <a href="#years">The years</a>
+    <a href="#story">The story</a>
+    <a href="#two">Two laptops</a>
+    <a href="#finds">The finds</a>
     <a href="#site">Using the site</a>
     <a href="#token">Token</a>
     <a href="#local">Nothing is stored</a>
-    <a href="#roadmap">Roadmap</a>
     <a href="#faq">FAQ</a>
   </aside>
 
   <main>
     <div class="hero">
-      <h1><span data-name>NOT COLLECTED</span> DOCS</h1>
-      <p>Everything about the shelf, written on the back of the ticket
-Read it at the counter, the counter is open</p>
+      <h1><span data-name>LAPTOP HUNTER</span> DOCS</h1>
+      <p>Everything about the laptop he went back for
+Written on the lid, in dirt</p>
     </div>
 
     <section id="what" class="sec">
-      <h2><i>01 · OVERVIEW</i>What is <span data-name>Not Collected</span></h2>
-      <p>A small computer repair shop in Delaware and one green laptop on shelf 2. It was dropped off in April 2019 with a liquid problem, fixed the same day, and never picked up. The shop kept it. The world argued about it. The laptop sat there.</p>
-      <p>In September 2026 the owner came back with the ticket because the laptop got a token. The shop asked for an ID. This site is the shelf.</p>
+      <h2><i>01 · OVERVIEW</i>What is <span data-name>Laptop Hunter</span></h2>
+      <p>In 2019 a laptop was left at a repair shop in Delaware and never picked up. In September 2026 its owner launched a token named after it. On this site he goes back for the laptop itself: digs it out of a cornfield, holds it up to the sky, drives it home. It is green, it glows, it has a face, and it is still switched on.</p>
+      <p>Everything looks like a 2003 console game because that is the last year anyone updated the laptop.</p>
       <div class="rows">
-        <dl class="row"><dt>CHARACTER</dt><dd>One green low poly laptop with a two dot face on the screen, and a claim tag on a string</dd></dl>
-        <dl class="row"><dt>PLACE</dt><dd>The shop: glass counter, keyboards and cables, a wall of tagged laptops, the NOT COLLECTED shelf</dd></dl>
-        <dl class="row"><dt>THE STYLE</dt><dd>Everyone and everything looks like a 2003 console game, the shop stopped updating that year too</dd></dl>
+        <dl class="row"><dt>HERO</dt><dd>A green low poly caricature of the owner, blazer, stubble, shovel</dd></dl>
+        <dl class="row"><dt>THE ITEM</dt><dd>One green laptop with a two dot face on the screen, dirt on the lid</dd></dl>
+        <dl class="row"><dt>THE STYLE</dt><dd>PlayStation 2 screenshots, flat light, soft textures, saturated green</dd></dl>
         <dl class="row"><dt>CHAIN</dt><dd>Robinhood Chain, token through the Pons launchpad</dd></dl>
       </div>
     </section>
 
-    <section id="ticket" class="sec">
-      <h2><i>02 · SLIP 0419</i>The ticket</h2>
+    <section id="story" class="sec">
+      <h2><i>02 · THE WALK</i>The story</h2>
+      <p>Scrolling the first screen plays the recovery, six frames blended into each other.</p>
+      <div class="tree"><b>frames</b>
+├── 1   dawn, a cornfield, a shovel, a faint green glow in the dirt
+├── 2   he pulls it out with both hands, the screen is already on
+├── 3   he holds it up to the sky, a beam of light finds it
+├── 4   golden hour, he carries it home under one arm
+├── 5   dusk, the laptop rides in the passenger seat
+└── 6   night on the hood of the car, the screen the only light</div>
+    </section>
+
+    <section id="two" class="sec">
+      <h2><i>03 · WHICH ONE</i>Two laptops</h2>
       <div class="rows">
-        <dl class="row"><dt>ITEM</dt><dd>One laptop, green</dd></dl>
-        <dl class="row"><dt>DROPPED OFF</dt><dd>April 2019, the customer said Tuesday</dd></dl>
-        <dl class="row"><dt>ISSUE</dt><dd>Liquid, unspecified</dd></dl>
-        <dl class="row"><dt>REPAIRED</dt><dd>Same day</dd></dl>
-        <dl class="row"><dt>CALLS MADE</dt><dd>Three, then the shop stopped</dd></dl>
-        <dl class="row"><dt>DAYS ON THE SHELF</dt><dd>Counted live at the top of the site from 12 April 2019</dd></dl>
-        <dl class="row"><dt>COLLECTED</dt><dd>No</dd></dl>
+        <dl class="row"><dt>HIS TOKEN</dt><dd>$LAPTOP, launched by the owner on Base on 9 September 2026, one billion supply, a share airdropped to wallets that lost money on $TRUMP, as reported by CoinDesk, CNN and Forbes</dd></dl>
+        <dl class="row"><dt>THIS LAPTOP</dt><dd>The green one from the cornfield, on Robinhood Chain through Pons. Different chain, different token, same laptop energy</dd></dl>
+        <dl class="row"><dt>NOT AFFILIATED</dt><dd>Nobody here has met the owner. The story is public, the cornfield is ours</dd></dl>
       </div>
     </section>
 
-    <section id="years" class="sec">
-      <h2><i>03 · THE SHELF</i>The years</h2>
-      <p>Five pictures from the shop, one per year that mattered. All of them are the same laptop in the same spot.</p>
-      <div class="tree"><b>years</b>
-├── 2019   dropped it off, said he would be back Tuesday
-├── 2020   the shop closed for a while, the laptop did not notice
-├── 2022   dusted every spring, never moved
-├── 2024   made the news, still no pickup
-└── 2026   came back with the ticket, forgot the ID</div>
+    <section id="finds" class="sec">
+      <h2><i>04 · WHERE HE FOUND IT</i>The finds</h2>
+      <p>Six places the laptop turned up before the cornfield, or after it, the order is unclear.</p>
+      <div class="tree"><b>finds</b>
+├── RIVER    pulled it out of the Brandywine, still on
+├── TEMPLE   swapped it for a bag of sand, the boulder did not care
+├── VAULT    it was in the vault the whole time, nobody checked
+├── BOAT     caught it on the second cast
+├── SUMMIT   carried it up so it could see the launch
+└── MOON     left the flag, kept the laptop</div>
     </section>
 
     <section id="site" class="sec">
-      <h2><i>04 · CONTROLS</i>Using the site</h2>
+      <h2><i>05 · CONTROLS</i>Using the site</h2>
       <div class="rows">
-        <dl class="row"><dt>LOADING</dt><dd>The ticket on the loading screen fills as the six frames of the shop arrive</dd></dl>
-        <dl class="row"><dt>THE WALK</dt><dd>Scrolling walks you from the sidewalk to the counter to the shelf, and the day turns into night. The frames blend into each other on the way</dd></dl>
-        <dl class="row"><dt>SOUND</dt><dd>Quiet until you tap. Your first click anywhere starts the shop radio</dd></dl>
-        <dl class="row"><dt>COLLECT</dt><dd>The red button on the ticket. Press it as many times as you like, the line under it tells you what the counter needs</dd></dl>
-        <dl class="row"><dt>THE YEARS</dt><dd>Click a year to open it, <span class="kbd">←</span> <span class="kbd">→</span> to move, <span class="kbd">ESC</span> or CLOSE to close</dd></dl>
-        <dl class="row"><dt>CAM 2</dt><dd>The last screen is the shelf camera. The laptop blinks, the tag sways, nothing else happens</dd></dl>
+        <dl class="row"><dt>LOADING</dt><dd>RECOVERING THE LAPTOP fills as the six frames arrive</dd></dl>
+        <dl class="row"><dt>SEE THE FIND</dt><dd>The green button at the bottom scrolls you to the item card. Scrolling by hand plays the frames</dd></dl>
+        <dl class="row"><dt>SOUND</dt><dd>Quiet until you tap. Your first click anywhere starts the music</dd></dl>
+        <dl class="row"><dt>ITEM CARD</dt><dd>Where he found it, how deep, what condition. Contract address with a copy button, BUY, X and this page</dd></dl>
+        <dl class="row"><dt>OPEN THE LAPTOP</dt><dd>Red button. It asks for a password, counts your attempts, and locks until launch</dd></dl>
+        <dl class="row"><dt>THE FINDS</dt><dd>Click a place to open it, <span class="kbd">←</span> <span class="kbd">→</span> to move, <span class="kbd">ESC</span> or CLOSE to close</dd></dl>
+        <dl class="row"><dt>LIVE</dt><dd>The last screen is him holding it up, on loop</dd></dl>
       </div>
     </section>
 
     <section id="token" class="sec">
-      <h2><i>05 · TOKEN</i>Token</h2>
-      <p>The token launches on Robinhood Chain through the Pons launchpad. The contract goes onto the ticket and under the shelf camera. Until then both say soon.</p>
+      <h2><i>06 · TOKEN</i>Token</h2>
+      <p>This token launches on Robinhood Chain through the Pons launchpad. The contract goes onto the item card and under the live feed. Until then both say soon and the copy button says not yet.</p>
       <div class="ca" id="ca"><small>CONTRACT</small><b id="caVal">soon</b><button class="copy" id="caCopy">COPY</button></div>
       <div class="links">
         <a class="btn buy" data-link="pons" href="https://www.ponsfamily.com/launchpad"><svg><use href="#i-pons"/></svg>Buy on Pons</a>
@@ -170,42 +179,33 @@ Read it at the counter, the counter is open</p>
       <div class="rows">
         <dl class="row"><dt>CHAIN</dt><dd>Robinhood Chain, EVM, addresses start with 0x</dd></dl>
         <dl class="row"><dt>LAUNCHPAD</dt><dd>Pons, ponsfamily.com. Buy opens the launchpad, and the token page once the address is in</dd></dl>
-        <dl class="row"><dt>CHART</dt><dd>DexScreener on Robinhood Chain, the link joins the ticket together with the contract</dd></dl>
-        <dl class="row"><dt>NOT THIS</dt><dd>This is not the token launched by the laptop's owner on another chain. This is the shelf it sat on</dd></dl>
+        <dl class="row"><dt>CHART</dt><dd>DexScreener on Robinhood Chain, the link joins the card together with the contract</dd></dl>
       </div>
     </section>
 
     <section id="local" class="sec">
-      <h2><i>06 · PRIVACY</i>Nothing is stored</h2>
-      <p>No backend, no account, no cookies, nothing written to your browser. The shop keeps one thing and it is not yours.</p>
+      <h2><i>07 · PRIVACY</i>Nothing is stored</h2>
+      <p>No backend, no account, no cookies, nothing written to your browser. The only thing anyone keeps here is the laptop.</p>
       <div class="rows">
-        <dl class="row"><dt>MUSIC</dt><dd>One CC0 ambient loop on the shop radio, plays after your first tap</dd></dl>
-        <dl class="row"><dt>REDUCED MOTION</dt><dd>If your system asks for it, the dust and the blinking stop, the scroll still works</dd></dl>
+        <dl class="row"><dt>MUSIC</dt><dd>One CC0 ambient loop, plays after your first tap</dd></dl>
+        <dl class="row"><dt>REDUCED MOTION</dt><dd>If your system asks for it, the bobbing, the dust and the blinking stop, the scroll still works</dd></dl>
       </div>
-    </section>
-
-    <section id="roadmap" class="sec">
-      <h2><i>07 · NEXT</i>Roadmap</h2>
-      <div class="tree"><b>status</b>
-├── done      the shop, the walk, the ticket, five years, the camera, this manual
-├── launch    contract on the ticket, chart link joins the buttons
-└── after     more years on the shelf, the laptop stays where it is</div>
     </section>
 
     <section id="faq" class="sec">
       <h2><i>08 · FAQ</i>Questions</h2>
       <div class="faq">
-        <div><b>Is this the real laptop</b><span>It is a green one with a face on a shelf in a game. Everything else about the story you already know</span></div>
-        <div><b>Can I collect it</b><span>Bring the ticket and an ID. The button on the site only takes the ticket</span></div>
-        <div><b>Why is it green</b><span>Shop colour. Everything left here long enough turns green</span></div>
-        <div><b>Does the shop still call</b><span>Three calls in 2019. The number has not changed, the shop has not either</span></div>
-        <div><b>What happens at launch</b><span>The contract goes onto the ticket, the buy button starts pointing at the token page, the laptop stays on shelf 2</span></div>
+        <div><b>Is this his token</b><span>No. His is $LAPTOP on Base. This is the laptop, on Robinhood Chain, and it is green</span></div>
+        <div><b>Can I open it</b><span>You can press the button. It wants a password. He has it, you do not</span></div>
+        <div><b>Why a cornfield</b><span>Delaware has cornfields and the shop was closed</span></div>
+        <div><b>Why is everything green</b><span>Everything he touches for long enough turns green, the laptop went first</span></div>
+        <div><b>What happens at launch</b><span>The contract goes onto the item card, the buy button starts pointing at the token page, the laptop stays switched on</span></div>
       </div>
     </section>
   </main>
 </div>
 
-<footer class="foot"><span data-name>NOT COLLECTED</span><span>ROBINHOOD CHAIN · PONS · SHELF 2</span></footer>
+<footer class="foot"><span data-name>LAPTOP HUNTER</span><span>ROBINHOOD CHAIN · PONS · STILL SWITCHED ON</span></footer>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-pons" viewBox="0 0 64 64"><path d="M14 8h24c11 0 18 7 18 17s-7 17-18 17h-9v12a3 3 0 0 1-3 3H17a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3z" fill="currentColor"/><path d="M29 20h8c4 0 6.5 2 6.5 5s-2.5 5-6.5 5h-8z" fill="#fff" opacity=".9"/></symbol>
@@ -221,7 +221,8 @@ Read it at the counter, the counter is open</p>
   document.querySelectorAll('[data-link="x"]').forEach(function(a){ a.href = S.X_URL || 'https://x.com'; a.target='_blank'; a.rel='noopener'; });
   var caBox = document.getElementById('ca'), caVal = document.getElementById('caVal'), caCopy = document.getElementById('caCopy');
   caVal.textContent = HAS_CA ? CA : 'soon';
-  if(HAS_CA){ caBox.classList.add('live'); caBox.title = CA; caBox.addEventListener('click', function(){ if(navigator.clipboard) navigator.clipboard.writeText(CA); var old = caCopy.textContent; caCopy.textContent = 'COPIED'; setTimeout(function(){ caCopy.textContent = old; }, 1100); }); }
+  if(HAS_CA){ caBox.classList.add('live'); caBox.title = CA; }
+  caBox.addEventListener('click', function(){ var old = caCopy.textContent; if(HAS_CA){ if(navigator.clipboard) navigator.clipboard.writeText(CA); caCopy.textContent = 'COPIED'; } else { caCopy.textContent = 'NOT YET'; } setTimeout(function(){ caCopy.textContent = old; }, 1100); });
   var links = [].slice.call(document.querySelectorAll('.side a')), secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
   function spy(){ var y = window.scrollY + 120, cur = 0; secs.forEach(function(s, i){ if(s && s.offsetTop <= y) cur = i; }); links.forEach(function(a, i){ a.classList.toggle('on', i === cur); }); }
   addEventListener('scroll', spy, { passive: true }); spy();

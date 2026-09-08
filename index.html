@@ -4,8 +4,8 @@
 <script src="config.js"></script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Not Collected</title>
-<meta name="description" content="Dropped off in April 2019, repaired the same day, nobody came back" />
+<title>Laptop Hunter</title>
+<meta name="description" content="He went back for the laptop, it was still there, now it has a token" />
 <link rel="icon" type="image/png" href="assets/favicon.png" />
 <link rel="apple-touch-icon" href="assets/apple-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,6 +34,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .boot__fill{height:100%;width:0;transition:width 90ms linear;background-image:repeating-linear-gradient(to right,var(--green) 0,var(--green) 8px,var(--shop-2) 8px,var(--shop-2) 11px)}
 .boot__pct{font-size:11px;letter-spacing:.2em;color:var(--dim)}
 
+/* ---------- go button ---------- */
+.go{position:fixed;left:50%;bottom:26px;translate:-50% 0;z-index:30;display:inline-flex;align-items:center;gap:10px;padding:12px 22px 12px 16px;background:var(--green);color:var(--ink);
+  font-family:var(--disp);font-size:16px;letter-spacing:.16em;box-shadow:0 14px 34px rgba(0,0,0,.6),0 0 22px rgba(182,232,60,.4);transition:opacity .4s,transform .15s;cursor:pointer}
+.go i{font-style:normal;display:inline-block;animation:1.4s ease-in-out infinite nudge}
+.go:hover{transform:translate(-50%,-2px)}
+.go.gone{opacity:0;pointer-events:none}
 /* ---------- hint ---------- */
 .hint{position:fixed;left:50%;bottom:24px;translate:-50% 0;z-index:30;font-family:var(--disp);font-size:22px;color:var(--cream);text-shadow:0 2px 10px rgba(0,0,0,.9);transition:opacity .5s;pointer-events:none;animation:1.4s ease-in-out infinite nudge}
 .hint.gone{opacity:0}
@@ -71,28 +77,63 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .row span{letter-spacing:.14em;color:#5a4a1c;white-space:nowrap}
 .row b{font-weight:400;text-align:right}
 .row b.red{color:var(--red);font-family:var(--disp);letter-spacing:.06em;font-size:15px}
-.ca-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:9px 10px;background:rgba(255,255,255,.35);border:1px dashed var(--tag-d);margin-bottom:12px}
+.ca-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:9px 10px;background:rgba(255,255,255,.35);border:1px dashed var(--tag-d);margin-bottom:12px;cursor:pointer}
+.ca-row .ca-val{text-align:center}
 .ca-row .tag{font-size:10px;letter-spacing:.24em;color:#5a4a1c;flex:none}
 .ca-row .ca-val{font-size:13px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ca-row .cp{display:none;font-size:10px;letter-spacing:.16em;color:var(--red);flex:none}
+.ca-row .cp{display:block;font-size:10px;letter-spacing:.16em;color:var(--red);flex:none}
 .ca-row.live{cursor:pointer;background:#fff8dc;border-style:solid;box-shadow:0 0 18px rgba(182,232,60,.45)}
-.ca-row.live .cp{display:block}
 .links{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:8px}
 .btn{height:42px;display:flex;align-items:center;justify-content:center;gap:7px;font-family:var(--disp);font-size:15px;letter-spacing:.12em;background:var(--ink);color:var(--cream);transition:transform .12s}
 .btn svg{width:14px;height:14px}
 .btn.buy{background:var(--green);color:var(--ink)}
 .btn:hover{transform:translateY(-2px)}
 .btn:active{transform:translateY(1px)}
-.collect{margin-top:10px;width:100%;height:46px;display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--disp);font-size:17px;letter-spacing:.16em;background:var(--red);color:#fff;position:relative}
-.collect small{font-family:var(--type);font-size:11px;letter-spacing:.04em;opacity:.85}
-.collect.shake{animation:.4s shake}
 @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
 .reply{text-align:center;font-size:12px;letter-spacing:.14em;color:#5a4a1c;min-height:16px;margin-top:8px}
 .reply.on{color:var(--red)}
 
+/* ---------- item acquired ---------- */
+.item{position:relative;background:var(--ink);padding:70px 20px 40px}
+.item:before{content:"";position:absolute;left:0;right:0;top:-70px;height:70px;background:linear-gradient(rgba(28,26,20,0),var(--ink))}
+.card{width:min(640px,100%);margin:0 auto;background:#0f1a10;border:2px solid var(--green);box-shadow:0 0 0 6px #0f1a10,0 0 0 8px #2d4a12,0 30px 70px rgba(0,0,0,.7);padding:22px 22px 20px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center}
+.card .pic{position:relative;background:radial-gradient(circle at 50% 45%,rgba(182,232,60,.25),transparent 65%)}
+.card .pic img{width:100%;filter:drop-shadow(0 0 18px rgba(182,232,60,.55));animation:3s ease-in-out infinite bob}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.card .pic::after{content:"";position:absolute;left:12%;right:12%;bottom:-6px;height:14px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,0,0,.6),transparent 70%)}
+.card h2{font-family:var(--disp);font-size:clamp(24px,4vw,38px);letter-spacing:.06em;color:var(--green);line-height:1;text-shadow:0 0 14px rgba(182,232,60,.4)}
+.card h2 small{display:block;font-family:var(--type);font-size:11px;letter-spacing:.3em;color:var(--dim);margin-bottom:8px}
+.card .stats{margin-top:12px;border-top:1px solid #2d4a12;font-size:13px}
+.card .stats div{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid #1f3010}
+.card .stats span{letter-spacing:.14em;color:var(--dim);white-space:nowrap}
+.card .stats b{font-weight:400;text-align:right;color:var(--cream)}
+.card .stats b.g{color:var(--green)}
+.card .ca-row{margin-top:12px;background:#0a120b;border:1px dashed #2d4a12;color:var(--cream)}
+.card .ca-row .tag{color:var(--dim)}
+.card .ca-row .cp{display:block;color:var(--green)}
+.card .ca-row.live{background:#15200f;box-shadow:0 0 22px rgba(182,232,60,.35);border-style:solid}
+.card .links{margin-top:10px}
+.card .btn{background:#1f3010;color:var(--cream)}
+.card .btn.buy{background:var(--green);color:var(--ink)}
+.card .open{margin-top:10px;width:100%;height:46px;display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--disp);font-size:17px;letter-spacing:.16em;background:var(--red);color:#fff}
+.card .open.shake{animation:.4s shake}
+.card .reply{text-align:center;font-size:12px;letter-spacing:.14em;color:var(--dim);min-height:16px;margin-top:8px}
+.card .reply.on{color:var(--green)}
+/* ---------- the other laptop ---------- */
+.fact{background:var(--ink);padding:20px 20px 60px}
+.fact .in{width:min(640px,100%);margin:0 auto;background:var(--tag);color:var(--ink);padding:18px 20px 16px;rotate:.8deg;position:relative}
+.fact .in::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:8px;background:radial-gradient(circle at 6px 0,transparent 5px,var(--tag) 5.5px) -6px 0/12px 8px repeat-x}
+.fact h3{font-family:var(--disp);font-size:20px;letter-spacing:.08em;margin-bottom:8px}
+.fact h3 small{display:block;font-family:var(--type);font-size:10px;letter-spacing:.3em;color:#5a4a1c;margin-bottom:4px}
+.fact .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;font-size:12.5px;line-height:1.5}
+.fact .two b{display:block;font-family:var(--disp);font-size:14px;letter-spacing:.06em;margin-bottom:4px}
+.fact .two p + p{margin-top:4px}
+.fact .two .ours{background:rgba(182,232,60,.25);padding:10px 12px;border:1px dashed var(--green-d)}
+.fact .two .theirs{padding:10px 12px;border:1px dashed var(--tag-d)}
+
 /* ---------- the years ---------- */
 .years{background:#141310;padding:60px 20px 70px}
-.years .grid{width:min(980px,100%);margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.years .grid{width:min(980px,100%);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .years button{padding:0;background:#000;position:relative;overflow:hidden;aspect-ratio:1/1;border:2px solid #2a2820}
 .years button:hover{border-color:var(--green)}
 .years img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
@@ -146,7 +187,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .links{grid-template-columns:1fr 1fr}
   .links .btn.buy{grid-column:1 / -1}
   .years .grid{grid-template-columns:repeat(2,1fr)}
-  .years button:last-child{grid-column:1 / -1;aspect-ratio:2/1}
+  .card{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .card .stats div{text-align:left}
+  .fact .two{grid-template-columns:1fr}
   .ca-row .ca-val{width:100%;flex:none;font-size:clamp(10px,2.9vw,13px)}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
@@ -155,68 +198,77 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 <body>
 
 <div class="boot" id="boot">
-  <div class="boot__tag"><small>CLAIM TICKET</small><b>0419</b></div>
+  <div class="boot__tag"><small>RECOVERING</small><b>THE LAPTOP</b></div>
   <div class="boot__trough"><div class="boot__fill" id="fill"></div></div>
-  <div class="boot__pct" id="pct">0% OF THE SHELF LOADED</div>
+  <div class="boot__pct" id="pct">0% RECOVERED</div>
 </div>
 
-<div class="hint" id="hint">v</div>
+<button class="go" id="go"><i>v</i>SEE THE FIND</button>
 
 <section class="hero" id="hero">
   <div class="hero__sticky">
     <canvas class="hero__canvas" id="cv"></canvas>
     <div class="hero__crt"></div>
     <div class="hero__overlay">
-      <div class="hero__alt">TICKET <b>0419</b> // SHELF 2 // DAY <b id="days">0</b></div>
+      <div class="hero__alt">LOST <b>2019</b> // RECOVERED <b>2026</b> // DAY <b id="days">0</b></div>
       <div class="hero__block">
-        <div class="eyebrow">STILL ON THE SHELF</div>
-        <h1 class="stamp" id="title" data-name>NOT COLLECTED</h1>
-        <p class="hero__copy" data-tagline>Dropped off in April 2019
-Repaired the same day
-Nobody came back</p>
+        <div class="eyebrow">HE WENT BACK FOR IT</div>
+        <h1 class="stamp" id="title" data-name>LAPTOP HUNTER</h1>
+        <p class="hero__copy" id="copy">Buried in 2019, dug up in 2026, still switched on</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="ticket">
-  <div class="kick">CLAIM TICKET · KEEP THIS SLIP</div>
-  <div class="paper">
-    <h2 data-name>NOT COLLECTED</h2>
-    <div class="no">TICKET 0419 · SHELF 2 · WILMINGTON</div>
-    <div class="rows">
-      <div class="row"><span>ITEM</span><b>one laptop, green</b></div>
-      <div class="row"><span>DROPPED OFF</span><b>April 2019</b></div>
-      <div class="row"><span>ISSUE</span><b>liquid, unspecified</b></div>
-      <div class="row"><span>REPAIRED</span><b>same day</b></div>
-      <div class="row"><span>CALLS MADE</span><b>three, then we stopped</b></div>
-      <div class="row"><span>COLLECTED</span><b class="red">NO</b></div>
+<section class="item" id="find">
+  <div class="kick">ITEM ACQUIRED</div>
+  <div class="card">
+    <div class="pic"><img src="assets/hero.webp" alt="The laptop, green, glowing" /></div>
+    <div>
+      <h2><small>YOU GOT</small>THE LAPTOP</h2>
+      <div class="stats">
+        <div><span>FOUND</span><b>a cornfield, Delaware</b></div>
+        <div><span>DEPTH</span><b>two feet, one shovel</b></div>
+        <div><span>CONDITION</span><b class="g">still switched on</b></div>
+        <div><span>OWNER</span><b>came back for it</b></div>
+        <div><span>CHAIN</span><b class="g">Robinhood Chain via Pons</b></div>
+      </div>
+      <div class="ca-row" id="ca"><span class="tag">CONTRACT</span><span class="ca-val" id="caVal">soon</span><span class="cp" id="caCopy">[ COPY ]</span></div>
+      <div class="links">
+        <a class="btn buy" data-link="pons" href="https://www.ponsfamily.com/launchpad"><svg><use href="#i-pons"/></svg>BUY</a>
+        <a class="btn" data-link="x" href="https://x.com"><svg><use href="#i-x"/></svg>X</a>
+        <a class="btn" href="/docs">DOCS</a>
+      </div>
+      <button class="open" id="open">OPEN THE LAPTOP</button>
+      <div class="reply" id="reply">it is locked</div>
     </div>
-    <div class="ca-row" id="ca"><span class="tag">CONTRACT</span><span class="ca-val" id="caVal">soon</span><span class="cp" id="caCopy">[ COPY ]</span></div>
-    <div class="links">
-      <a class="btn buy" data-link="pons" href="https://www.ponsfamily.com/launchpad"><svg><use href="#i-pons"/></svg>BUY</a>
-      <a class="btn" data-link="x" href="https://x.com"><svg><use href="#i-x"/></svg>X</a>
-      <a class="btn" href="/docs">DOCS</a>
+  </div>
+</section>
+
+<section class="fact">
+  <div class="in">
+    <h3><small>TWO LAPTOPS</small>Which one is this</h3>
+    <div class="two">
+      <div class="theirs"><b>His token</b><p>$LAPTOP, launched by the owner on Base on September 9, 2026, one billion supply, part of it airdropped to wallets that lost money on $TRUMP. That is the news.</p></div>
+      <div class="ours"><b>This laptop</b><p>The green one he dug out of the field. It lives on Robinhood Chain through Pons, it glows, it has a face, and it is not going back on any shelf.</p></div>
     </div>
-    <button class="collect" id="collect">COLLECT<small>bring the ticket</small></button>
-    <div class="reply" id="reply">the counter is open</div>
   </div>
 </section>
 
 <section class="years">
-  <div class="kick">THE YEARS · CLICK A YEAR</div>
+  <div class="kick">WHERE HE FOUND IT · CLICK ONE</div>
   <div class="grid" id="grid"></div>
 </section>
 
 <section class="end">
   <div class="dust"><span></span><span></span><span></span></div>
   <div class="cam">
-    <video src="assets/laptop.mp4" poster="assets/laptop-poster.webp" autoplay loop muted playsinline preload="metadata"></video>
+    <video src="assets/hunter.mp4" poster="assets/hunter-poster.webp" autoplay loop muted playsinline preload="metadata"></video>
     <div class="crt"></div>
-    <div class="lbl"><s></s>CAM 2 · SHELF</div>
+    <div class="lbl"><s></s>LIVE · THE FIND</div>
     <div class="time" id="camtime">--:--</div>
   </div>
-  <div class="end__line">still on the shelf<i class="end__cursor"></i></div>
+  <div class="end__line">he has it now<i class="end__cursor"></i></div>
   <div class="ca-row" id="ca2"><span class="tag">CONTRACT</span><span class="ca-val" id="caVal2">soon</span><span class="cp" id="caCopy2">[ COPY ]</span></div>
 </section>
 
@@ -224,10 +276,10 @@ Nobody came back</p>
 
 <div class="lb" id="lb">
   <div class="lb__inner" role="dialog" aria-label="The years">
-    <div class="lb__bar"><b id="lbyear">2019</b><button id="lbclose">CLOSE</button></div>
+    <div class="lb__bar"><b id="lbyear">RIVER</b><button id="lbclose">CLOSE</button></div>
     <div class="lb__stage">
       <button class="lb__nav" id="lbprev" aria-label="Previous">&lt;</button>
-      <img id="lbimg" src="assets/meme-1.webp" alt="" />
+      <img id="lbimg" src="assets/find-1.webp" alt="" />
       <button class="lb__nav" id="lbnext" aria-label="Next">&gt;</button>
     </div>
     <div class="lb__cap" id="lbcap"></div>
@@ -254,7 +306,8 @@ Nobody came back</p>
   [['ca','caVal','caCopy'],['ca2','caVal2','caCopy2']].forEach(function(ids){
     var box = document.getElementById(ids[0]), val = document.getElementById(ids[1]), cp = document.getElementById(ids[2]);
     val.textContent = HAS_CA ? CA : 'soon';
-    if(HAS_CA){ box.classList.add('live'); box.title = CA; box.addEventListener('click', function(){ if(navigator.clipboard) navigator.clipboard.writeText(CA); var old = cp.textContent; cp.textContent = '[ COPIED ]'; setTimeout(function(){ cp.textContent = old; }, 1400); }); }
+    if(HAS_CA){ box.classList.add('live'); box.title = CA; }
+    box.addEventListener('click', function(){ var old = cp.textContent; if(HAS_CA){ if(navigator.clipboard) navigator.clipboard.writeText(CA); cp.textContent = '[ COPIED ]'; } else { cp.textContent = '[ NOT YET ]'; } setTimeout(function(){ cp.textContent = old; }, 1400); });
   });
   document.getElementById('days').textContent = Math.floor((Date.now() - new Date(2019, 3, 12)) / 864e5);
   var ct = document.getElementById('camtime'); function tick(){ var d = new Date(), h = d.getHours(), m = d.getMinutes(); ct.textContent = (h<10?'0':'')+h+':'+(m<10?'0':'')+m; } tick(); setInterval(tick, 20000);
@@ -268,8 +321,8 @@ Nobody came back</p>
   /* ---- boot: preload the six frames ---- */
   var N = 6, FR = [], loaded = 0, cur = -1;
   var cv = document.getElementById('cv'), ctx = cv.getContext('2d');
-  var boot = document.getElementById('boot'), fill = document.getElementById('fill'), pct = document.getElementById('pct'), hint = document.getElementById('hint'), hero = document.getElementById('hero'), title = document.getElementById('title');
-  for(var i = 0; i < N; i++){ (function(k){ var im = new Image(); im.onload = im.onerror = function(){ loaded++; var p = Math.round(loaded / N * 100); fill.style.width = p + '%'; pct.textContent = p + '% OF THE SHELF LOADED'; if(loaded >= N) setTimeout(done, 320); }; im.src = 'assets/f' + (k+1) + '.jpg'; FR[k] = im; })(i); }
+  var boot = document.getElementById('boot'), fill = document.getElementById('fill'), pct = document.getElementById('pct'), go = document.getElementById('go'), hero = document.getElementById('hero'), title = document.getElementById('title');
+  for(var i = 0; i < N; i++){ (function(k){ var im = new Image(); im.onload = im.onerror = function(){ loaded++; var p = Math.round(loaded / N * 100); fill.style.width = p + '%'; pct.textContent = p + '% RECOVERED'; if(loaded >= N) setTimeout(done, 320); }; im.src = 'assets/h' + (k+1) + '.jpg'; FR[k] = im; })(i); }
   function done(){ boot.classList.add('is-done'); draw(0, 0); }
   setTimeout(done, 5000);
 
@@ -277,37 +330,40 @@ Nobody came back</p>
   function paint(im, alpha){ if(!im || !im.complete || !im.naturalWidth) return; ctx.globalAlpha = alpha; var s = Math.max(cv.width / im.naturalWidth, cv.height / im.naturalHeight); var w = im.naturalWidth * s, h = im.naturalHeight * s; ctx.drawImage(im, (cv.width - w) / 2, (cv.height - h) * 0.4, w, h); ctx.globalAlpha = 1; }
   function draw(idx, frac){ resize(); ctx.fillStyle = '#d7cdb3'; ctx.fillRect(0, 0, cv.width, cv.height); paint(FR[idx], 1); if(frac > 0 && FR[idx+1]) paint(FR[idx+1], frac); cur = idx; }
 
-  var hidden = false, night = false, lastKey = -1;
+  var hidden = false, night = false, lastKey = -1, copyEl = document.getElementById('copy');
   function loop(){
     var r = hero.getBoundingClientRect(), span = hero.offsetHeight - window.innerHeight;
     var p = span > 0 ? Math.max(0, Math.min(1, -r.top / span)) : 0;
     var f = p * (N - 1), idx = Math.min(N - 1, Math.floor(f)), frac = f - idx;
     var key = idx * 100 + Math.round(frac * 24);
     if(key !== lastKey){ lastKey = key; draw(idx, frac); }
-    if((p > 0.04) !== hidden){ hidden = p > 0.04; hint.classList.toggle('gone', hidden); }
-    if((p > 0.82) !== night){ night = p > 0.82; title.classList.toggle('night', night); }
+    if((p > 0.04) !== hidden){ hidden = p > 0.04; go.classList.toggle('gone', hidden); }
+    if((p > 0.86) !== night){ night = p > 0.86; title.classList.toggle('night', night); }
+    var c = p < .3 ? 'Buried in 2019, dug up in 2026, still switched on' : p < .6 ? 'He held it up so the sky could see it' : p < .86 ? 'Took the long road home with it on the seat' : 'It glows all night and so does he'; if(copyEl.textContent !== c) copyEl.textContent = c;
     requestAnimationFrame(loop);
   }
   window.addEventListener('resize', function(){ lastKey = -1; resize(); draw(cur < 0 ? 0 : cur, 0); });
   requestAnimationFrame(loop);
 
-  /* ---- collect: ID required ---- */
-  var col = document.getElementById('collect'), rep = document.getElementById('reply'),
-      lines = ['id required', 'still no id', 'the ticket is not enough', 'the shelf says no', 'come back in 2028', 'we called three times'], li = 0;
-  col.addEventListener('click', function(){ col.classList.remove('shake'); void col.offsetWidth; col.classList.add('shake'); rep.textContent = lines[li++ % lines.length]; rep.classList.add('on'); col.querySelector('small').textContent = 'try again'; clearTimeout(col._t); col._t = setTimeout(function(){ rep.classList.remove('on'); rep.textContent = 'the counter is open'; }, 2600); });
+  /* ---- open the laptop: password required ---- */
+  var col = document.getElementById('open'), rep = document.getElementById('reply'),
+      lines = ['password required', 'hint: it is not 2019', '3 attempts left', '2 attempts left', '1 attempt left', 'locked until launch', 'he knows the password, you do not'], li = 0;
+  col.addEventListener('click', function(){ col.classList.remove('shake'); void col.offsetWidth; col.classList.add('shake'); rep.textContent = lines[li++ % lines.length]; rep.classList.add('on'); clearTimeout(col._t); col._t = setTimeout(function(){ rep.classList.remove('on'); rep.textContent = 'it is locked'; }, 2600); });
+  go.addEventListener('click', function(){ document.getElementById('find').scrollIntoView({ behavior: 'smooth' }); });
 
   /* ---- the years ---- */
   var Y = [
-    ['2019', 'Dropped it off, said he would be back Tuesday'],
-    ['2020', 'The shop closed for a while, the laptop did not notice'],
-    ['2022', 'Dusted every spring, never moved'],
-    ['2024', 'Made the news, still no pickup'],
-    ['2026', 'Came back with the ticket, forgot the ID']
+    ['RIVER', 'Pulled it out of the Brandywine, still on'],
+    ['TEMPLE', 'Swapped it for a bag of sand, the boulder did not care'],
+    ['VAULT', 'It was in the vault the whole time, nobody checked'],
+    ['BOAT', 'Caught it on the second cast'],
+    ['SUMMIT', 'Carried it up so it could see the launch'],
+    ['MOON', 'Left the flag, kept the laptop']
   ];
   var M = Y.length, gi = 0, grid = document.getElementById('grid'), lb = document.getElementById('lb'), lbimg = document.getElementById('lbimg'), lbcap = document.getElementById('lbcap'), lbcount = document.getElementById('lbcount'), lbyear = document.getElementById('lbyear');
-  var g = ''; for(var n = 0; n < M; n++) g += '<button data-i="' + n + '" aria-label="Open ' + Y[n][0] + '"><img src="assets/thumb-' + (n+1) + '.webp" alt="" loading="lazy"><i></i><b>' + Y[n][0] + '</b><em>' + Y[n][1] + '</em></button>';
+  var g = ''; for(var n = 0; n < M; n++) g += '<button data-i="' + n + '" aria-label="Open ' + Y[n][0] + '"><img src="assets/findt-' + (n+1) + '.webp" alt="" loading="lazy"><i></i><b>' + Y[n][0] + '</b><em>' + Y[n][1] + '</em></button>';
   grid.innerHTML = g;
-  function show(k){ gi = (k + M) % M; lbimg.src = 'assets/meme-' + (gi+1) + '.webp'; lbimg.alt = Y[gi][1]; lbcap.textContent = Y[gi][1]; lbyear.textContent = Y[gi][0]; lbcount.textContent = (gi+1) + ' / ' + M + ' · ARROW KEYS · ESC'; }
+  function show(k){ gi = (k + M) % M; lbimg.src = 'assets/find-' + (gi+1) + '.webp'; lbimg.alt = Y[gi][1]; lbcap.textContent = Y[gi][1]; lbyear.textContent = Y[gi][0]; lbcount.textContent = (gi+1) + ' / ' + M + ' · ARROW KEYS · ESC'; }
   grid.addEventListener('click', function(e){ var b = e.target.closest('button'); if(!b) return; show(+b.dataset.i); lb.classList.add('on'); });
   document.getElementById('lbprev').addEventListener('click', function(){ show(gi-1); });
   document.getElementById('lbnext').addEventListener('click', function(){ show(gi+1); });
