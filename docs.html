@@ -52,9 +52,10 @@ img{display:block;max-width:100%}
 .tree{margin-top:12px;font-size:13px;line-height:1.6;white-space:pre;overflow-x:auto;padding:10px 12px;background:rgba(255,255,255,.35)}
 .tree b{color:var(--red);font-weight:400}
 .kbd{display:inline-block;font-family:var(--disp);font-size:11px;padding:2px 7px;background:var(--ink);color:var(--cream);margin:0 2px;letter-spacing:.1em}
-.ca{display:inline-flex;align-items:center;gap:10px;max-width:100%;padding:8px 12px;margin-top:12px;background:rgba(255,255,255,.35);border:1px dashed var(--tag-d)}
+.ca{display:grid;justify-items:center;gap:6px;max-width:100%;padding:10px 12px;margin-top:12px;background:rgba(255,255,255,.35);border:1px dashed var(--tag-d);cursor:pointer}
 .ca small{font-size:9px;letter-spacing:.2em;color:#5a4a1c;white-space:nowrap}
-.ca b{font-weight:400;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ca b{font-weight:400;font-size:15px;white-space:nowrap;max-width:100%;letter-spacing:.04em}
+.ca.live b{font-size:clamp(9.5px,2.6vw,13px);letter-spacing:.02em}
 .ca .copy{display:inline-block;font:inherit;font-family:var(--disp);font-size:11px;letter-spacing:.14em;padding:5px 9px;background:var(--red);color:#fff;border:0;cursor:pointer}
 .ca.live{cursor:pointer;background:#fff8dc;border-style:solid;box-shadow:0 0 16px rgba(182,232,60,.45)}
 .links{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
@@ -72,10 +73,7 @@ img{display:block;max-width:100%}
   .side a{white-space:nowrap;font-size:12px;padding:5px 9px;border-left:0;background:#2a2820}
   .row{grid-template-columns:1fr;gap:3px}
   .top nav .btn span{display:none}
-  .ca{width:100%;flex-wrap:wrap;gap:5px 10px}
-  .ca small{width:100%}
-  .ca b{width:100%;font-size:clamp(9px,2.7vw,13px)}
-  .ca .copy{width:100%;text-align:center}
+  .ca{width:100%}
 }
 </style>
 </head>
@@ -159,18 +157,17 @@ Written on the lid, in dirt</p>
       <h2><i>05 · CONTROLS</i>Using the site</h2>
       <div class="rows">
         <dl class="row"><dt>LOADING</dt><dd>RECOVERING THE LAPTOP fills as the six frames arrive</dd></dl>
-        <dl class="row"><dt>SEE THE FIND</dt><dd>The green button at the bottom scrolls you to the item card. Scrolling by hand plays the frames</dd></dl>
+        <dl class="row"><dt>SEE THE FIND</dt><dd>The green button at the bottom scrolls you to the finds. Scrolling by hand plays the frames</dd></dl>
         <dl class="row"><dt>SOUND</dt><dd>Quiet until you tap. Your first click anywhere starts the music</dd></dl>
-        <dl class="row"><dt>ITEM CARD</dt><dd>Where he found it, how deep, what condition. Contract address with a copy button, BUY, X and this page</dd></dl>
-        <dl class="row"><dt>OPEN THE LAPTOP</dt><dd>Red button. It asks for a password, counts your attempts, and locks until launch</dd></dl>
+        <dl class="row"><dt>THE PANEL</dt><dd>Six finds, then Buy, X and this page as three tiles</dd></dl>
         <dl class="row"><dt>THE FINDS</dt><dd>Click a place to open it, <span class="kbd">←</span> <span class="kbd">→</span> to move, <span class="kbd">ESC</span> or CLOSE to close</dd></dl>
-        <dl class="row"><dt>LIVE</dt><dd>The last screen is him holding it up, on loop</dd></dl>
+        <dl class="row"><dt>LIVE</dt><dd>The last screen is him holding it up on loop, with the contract and a copy button under it</dd></dl>
       </div>
     </section>
 
     <section id="token" class="sec">
       <h2><i>06 · TOKEN</i>Token</h2>
-      <p>This token launches on Robinhood Chain through the Pons launchpad. The contract goes onto the item card and under the live feed. Until then both say soon and the copy button says not yet.</p>
+      <p>This token launches on Robinhood Chain through the Pons launchpad. The contract goes under the live feed and here. Until then both say soon and the copy button says not yet.</p>
       <div class="ca" id="ca"><small>CONTRACT</small><b id="caVal">soon</b><button class="copy" id="caCopy">COPY</button></div>
       <div class="links">
         <a class="btn buy" data-link="pons" href="https://www.ponsfamily.com/launchpad"><svg><use href="#i-pons"/></svg>Buy on Pons</a>
@@ -179,7 +176,7 @@ Written on the lid, in dirt</p>
       <div class="rows">
         <dl class="row"><dt>CHAIN</dt><dd>Robinhood Chain, EVM, addresses start with 0x</dd></dl>
         <dl class="row"><dt>LAUNCHPAD</dt><dd>Pons, ponsfamily.com. Buy opens the launchpad, and the token page once the address is in</dd></dl>
-        <dl class="row"><dt>CHART</dt><dd>DexScreener on Robinhood Chain, the link joins the card together with the contract</dd></dl>
+        <dl class="row"><dt>CHART</dt><dd>DexScreener on Robinhood Chain, the link joins the tiles together with the contract</dd></dl>
       </div>
     </section>
 
@@ -196,10 +193,10 @@ Written on the lid, in dirt</p>
       <h2><i>08 · FAQ</i>Questions</h2>
       <div class="faq">
         <div><b>Is this his token</b><span>No. His is $LAPTOP on Base. This is the laptop, on Robinhood Chain, and it is green</span></div>
-        <div><b>Can I open it</b><span>You can press the button. It wants a password. He has it, you do not</span></div>
+        <div><b>Can I open it</b><span>No. He has the password, and he is not in a sharing mood</span></div>
         <div><b>Why a cornfield</b><span>Delaware has cornfields and the shop was closed</span></div>
         <div><b>Why is everything green</b><span>Everything he touches for long enough turns green, the laptop went first</span></div>
-        <div><b>What happens at launch</b><span>The contract goes onto the item card, the buy button starts pointing at the token page, the laptop stays switched on</span></div>
+        <div><b>What happens at launch</b><span>The contract goes under the live feed, the buy tile starts pointing at the token page, the laptop stays switched on</span></div>
       </div>
     </section>
   </main>

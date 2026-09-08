@@ -131,9 +131,32 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .fact .two .ours{background:rgba(182,232,60,.25);padding:10px 12px;border:1px dashed var(--green-d)}
 .fact .two .theirs{padding:10px 12px;border:1px dashed var(--tag-d)}
 
-/* ---------- the years ---------- */
+/* ---------- the finds panel ---------- */
 .years{background:#141310;padding:60px 20px 70px}
-.years .grid{width:min(980px,100%);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.panel{width:min(980px,100%);margin:0 auto;border:2px solid var(--green-d);background:linear-gradient(#171a12,#0f110c);box-shadow:0 0 40px rgba(182,232,60,.08)}
+.panel__bar{display:flex;align-items:center;gap:10px;padding:8px 12px;background:linear-gradient(#26310f,#151c08);border-bottom:2px solid var(--green-d)}
+.panel__bar b{font-family:var(--disp);font-size:18px;letter-spacing:.14em;color:var(--green);font-weight:400}
+.panel__bar span{margin-left:auto;font-size:10px;letter-spacing:.2em;color:var(--green-d)}
+.panel__body{padding:14px}
+.links{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.linkbtn{flex:1 1 0;min-width:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:15px 10px;color:var(--cream);
+  background:linear-gradient(#242a18,#15180f);border:1px solid #3a4423;animation:bob 3s ease-in-out infinite;transition:transform .15s,filter .15s,border-color .15s}
+.linkbtn:nth-child(2){animation-delay:.4s}
+.linkbtn:nth-child(3){animation-delay:.8s}
+.linkbtn:hover{animation-play-state:paused;transform:translateY(-4px);filter:brightness(1.3);border-color:var(--green)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.linkbtn svg{width:20px;height:20px}
+.linkbtn b{font-family:var(--disp);font-size:18px;letter-spacing:.12em;font-weight:400}
+.linkbtn.go2{background:linear-gradient(#3c5a0e,#243a06);border-color:var(--green-d)}
+/* ---------- CA block: label, value, copy under ---------- */
+.ca{display:grid;justify-items:center;gap:6px;padding:12px 16px;background:#0f0e0b;border:1px solid #2a2820;max-width:100%;cursor:pointer}
+.ca .tag{font-size:10px;letter-spacing:.3em;color:var(--dim)}
+.ca .ca-val{font-family:var(--type);font-weight:400;font-size:20px;letter-spacing:.06em;color:var(--green);white-space:nowrap;max-width:100%;line-height:1.2}
+.ca.live .ca-val{font-size:clamp(10px,2.6vw,14px);letter-spacing:.02em}
+.ca .cp{font-family:var(--type);font-size:11px;letter-spacing:.16em;color:var(--dim);padding:5px 10px;border:1px dashed #3a3830}
+.ca.live{background:#15140f;box-shadow:0 0 22px rgba(182,232,60,.35)}
+.ca.live .cp{color:var(--green);border-color:var(--green-d)}
+.years .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .years button{padding:0;background:#000;position:relative;overflow:hidden;aspect-ratio:1/1;border:2px solid #2a2820}
 .years button:hover{border-color:var(--green)}
 .years img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
@@ -187,9 +210,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .links{grid-template-columns:1fr 1fr}
   .links .btn.buy{grid-column:1 / -1}
   .years .grid{grid-template-columns:repeat(2,1fr)}
-  .card{grid-template-columns:1fr;justify-items:center;text-align:center}
-  .card .stats div{text-align:left}
-  .fact .two{grid-template-columns:1fr}
+  .ca .ca-val{font-size:18px}
+  .ca.live .ca-val{font-size:clamp(9px,2.55vw,12px)}
   .ca-row .ca-val{width:100%;flex:none;font-size:clamp(10px,2.9vw,13px)}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
@@ -220,44 +242,18 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   </div>
 </section>
 
-<section class="item" id="find">
-  <div class="kick">ITEM ACQUIRED</div>
-  <div class="card">
-    <div class="pic"><img src="assets/hero.webp" alt="The laptop, green, glowing" /></div>
-    <div>
-      <h2><small>YOU GOT</small>THE LAPTOP</h2>
-      <div class="stats">
-        <div><span>FOUND</span><b>a cornfield, Delaware</b></div>
-        <div><span>DEPTH</span><b>two feet, one shovel</b></div>
-        <div><span>CONDITION</span><b class="g">still switched on</b></div>
-        <div><span>OWNER</span><b>came back for it</b></div>
-        <div><span>CHAIN</span><b class="g">Robinhood Chain via Pons</b></div>
-      </div>
-      <div class="ca-row" id="ca"><span class="tag">CONTRACT</span><span class="ca-val" id="caVal">soon</span><span class="cp" id="caCopy">[ COPY ]</span></div>
+<section class="years" id="find">
+  <div class="panel">
+    <div class="panel__bar"><b>WHERE HE FOUND IT</b><span>6 FINDS</span></div>
+    <div class="panel__body">
+      <div class="grid" id="grid"></div>
       <div class="links">
-        <a class="btn buy" data-link="pons" href="https://www.ponsfamily.com/launchpad"><svg><use href="#i-pons"/></svg>BUY</a>
-        <a class="btn" data-link="x" href="https://x.com"><svg><use href="#i-x"/></svg>X</a>
-        <a class="btn" href="/docs">DOCS</a>
+        <a class="linkbtn go2" data-link="pons" href="https://www.ponsfamily.com/launchpad"><svg><use href="#i-pons"/></svg><b>Buy</b></a>
+        <a class="linkbtn" data-link="x" href="https://x.com"><svg><use href="#i-x"/></svg><b>X</b></a>
+        <a class="linkbtn" href="/docs"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M6 3h9l5 5v13H6z M14 3v6h6 M9 13h6 M9 17h6"/></svg><b>Docs</b></a>
       </div>
-      <button class="open" id="open">OPEN THE LAPTOP</button>
-      <div class="reply" id="reply">it is locked</div>
     </div>
   </div>
-</section>
-
-<section class="fact">
-  <div class="in">
-    <h3><small>TWO LAPTOPS</small>Which one is this</h3>
-    <div class="two">
-      <div class="theirs"><b>His token</b><p>$LAPTOP, launched by the owner on Base on September 9, 2026, one billion supply, part of it airdropped to wallets that lost money on $TRUMP. That is the news.</p></div>
-      <div class="ours"><b>This laptop</b><p>The green one he dug out of the field. It lives on Robinhood Chain through Pons, it glows, it has a face, and it is not going back on any shelf.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="years">
-  <div class="kick">WHERE HE FOUND IT · CLICK ONE</div>
-  <div class="grid" id="grid"></div>
 </section>
 
 <section class="end">
@@ -269,7 +265,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     <div class="time" id="camtime">--:--</div>
   </div>
   <div class="end__line">he has it now<i class="end__cursor"></i></div>
-  <div class="ca-row" id="ca2"><span class="tag">CONTRACT</span><span class="ca-val" id="caVal2">soon</span><span class="cp" id="caCopy2">[ COPY ]</span></div>
+  <div class="ca" id="ca"><span class="tag">CONTRACT</span><b class="ca-val" id="caVal">soon</b><button class="cp" id="caCopy">[ COPY ]</button></div>
 </section>
 
 <div class="scanlines"></div>
@@ -303,7 +299,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   document.title = S.NAME;
   document.querySelectorAll('[data-link="pons"]').forEach(function(a){ a.href = HAS_CA ? window.PONS_HOME + '/' + CA : window.PONS_HOME; a.target='_blank'; a.rel='noopener'; });
   document.querySelectorAll('[data-link="x"]').forEach(function(a){ a.href = S.X_URL || 'https://x.com'; a.target='_blank'; a.rel='noopener'; });
-  [['ca','caVal','caCopy'],['ca2','caVal2','caCopy2']].forEach(function(ids){
+  [['ca','caVal','caCopy']].forEach(function(ids){
     var box = document.getElementById(ids[0]), val = document.getElementById(ids[1]), cp = document.getElementById(ids[2]);
     val.textContent = HAS_CA ? CA : 'soon';
     if(HAS_CA){ box.classList.add('live'); box.title = CA; }
@@ -345,10 +341,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   window.addEventListener('resize', function(){ lastKey = -1; resize(); draw(cur < 0 ? 0 : cur, 0); });
   requestAnimationFrame(loop);
 
-  /* ---- open the laptop: password required ---- */
-  var col = document.getElementById('open'), rep = document.getElementById('reply'),
-      lines = ['password required', 'hint: it is not 2019', '3 attempts left', '2 attempts left', '1 attempt left', 'locked until launch', 'he knows the password, you do not'], li = 0;
-  col.addEventListener('click', function(){ col.classList.remove('shake'); void col.offsetWidth; col.classList.add('shake'); rep.textContent = lines[li++ % lines.length]; rep.classList.add('on'); clearTimeout(col._t); col._t = setTimeout(function(){ rep.classList.remove('on'); rep.textContent = 'it is locked'; }, 2600); });
   go.addEventListener('click', function(){ document.getElementById('find').scrollIntoView({ behavior: 'smooth' }); });
 
   /* ---- the years ---- */
